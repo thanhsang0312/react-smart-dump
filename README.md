@@ -1,69 +1,33 @@
-# React + TypeScript + Vite
+# Project Title
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This project is a template for a smart-dumb component architecture using React and TypeScript.
 
-Currently, two official plugins are available:
+## Folder Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `src/`: This is the main source directory containing all the application code.
+  - `components/`: This folder contains reusable React components that can be used throughout the application.
+    - `User/`: This subfolder contains components related to user management.
+      - `UserList.tsx`: A dumb component that displays a list of users. It takes a `users` prop, which is an array of user objects, and renders each user's name in a list item.
+  - `containers/`: This folder contains smart components that manage state and logic, often connecting to Redux or other state management solutions. They pass data to dumb components.
+  - `hooks/`: This folder contains custom React hooks that encapsulate reusable logic, making it easier to share functionality across components.
+  - `pages/`: This folder contains components that represent entire pages in the application, often composed of multiple containers and components.
+  - `services/`: This folder contains functions that handle API calls and business logic, separating concerns from UI components.
+  - `store/`: This folder contains the state management setup, such as Redux store configuration, actions, and reducers.
 
-## Expanding the ESLint configuration
+  - `App.tsx`: The main application component that integrates all other components and serves as the entry point for the React application.
+  - `index.tsx`: The entry point of the application where the React app is rendered into the DOM.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation
+1. Clone the repository.
+2. Navigate to the project directory.
+3. Run `npm install` to install dependencies.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Usage
+To start the application, run `npm run dev`. This will launch the app in your default web browser.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Contributing
+Feel free to submit issues or pull requests for improvements or bug fixes.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## License
+This project is licensed under the MIT License.
